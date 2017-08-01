@@ -1,0 +1,4 @@
+chapter4 观察者模式
+chapter5 多线程中的观察者模式，listener模式。线程通知观察者对象。
+chapter6 单线程执行设计模式
+chapter7 读写锁分离 readWriteLock Reader-Writer设计模式
