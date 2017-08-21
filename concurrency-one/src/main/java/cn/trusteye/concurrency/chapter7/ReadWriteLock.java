@@ -6,10 +6,20 @@ public class ReadWriteLock {
     private int writingWriters = 0;
     private int waitingWriters = 0;
 
+    private boolean preferWriter = true;
+
+    public ReadWriteLock() {
+        this(true);
+    }
+
+    public ReadWriteLock(boolean preferWriter) {
+        this.preferWriter = preferWriter;
+    }
+
     public synchronized void readLock() throws InterruptedException{
         waitingReaders++;
         try {
-            while (writingWriters > 0) {
+            while (writingWriters > 0 || (preferWriter && waitingWriters >0)) {
                 wait();
             }
             readingReaders++;
